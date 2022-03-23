@@ -8,7 +8,7 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
-        "serve": "php artisan serve --host=domain.test --port=8080 & npm run watch"
+        "serve": "php artisan serve --port=8000 & npm run watch"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
