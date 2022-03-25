@@ -1,4 +1,24 @@
 .dashboard-page {
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(255, 255, 255);
     padding: 50px;
+    .flex {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        flex-wrap: wrap;
+    }
+
+    .qrcode-card {
+        animation: floatIn 0.3s ease-in-out;
+        margin: 30px;
+    }
+    @keyframes floatIn {
+        0% {
+            margin-top: 40px;
+        }
+        100% {
+            margin-top: 30px;
+        }
+    }
 }
