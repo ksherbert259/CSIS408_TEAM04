@@ -6,7 +6,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-// import "../../sass/dashboard.scss";
+import "../../sass/dashboard.scss";
 import QRCode from "./qrcode";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
@@ -33,11 +33,15 @@ const CreateQRCode = ({ setQrCodes }) => {
             const newQRCode = await axios.post("/api/qrCode/store", {
                 qrCode: {
                     url,
+                    details,
                 },
             });
             console.log(newQRCode);
 
             setQrCodes((qrCodes) => [...qrCodes, newQRCode.data]);
+            setUrl("");
+            setDetails("");
+            window.scrollTo(0, document.body.scrollHeight);
         } catch (error) {
             console.log(error);
         }
@@ -46,9 +50,9 @@ const CreateQRCode = ({ setQrCodes }) => {
     };
 
     return (
-        <div className="dashboard-page">
+        <div className="create-qr-code">
             <Form onSubmit={submitCreateQRCodeRequest}>
-                <FormGroup>
+                <FormGroup className="mb-3">
                     <FormLabel>Input Url</FormLabel>
                     <FormControl
                         type="text"
@@ -57,7 +61,12 @@ const CreateQRCode = ({ setQrCodes }) => {
                         onChange={(e) => setUrl(e.target.value)}
                     />
                 </FormGroup>
-                <FormGroup>
+                <Form.Text className="text-muted">
+                    This is the url that will be encoded in the generated QR
+                    code.
+                </Form.Text>
+                <br /> <br />
+                <FormGroup className="mb-3">
                     <FormLabel>Details</FormLabel>
                     <FormControl
                         type="text"
@@ -66,6 +75,10 @@ const CreateQRCode = ({ setQrCodes }) => {
                         onChange={(e) => setDetails(e.target.value)}
                     />
                 </FormGroup>
+                <Form.Text className="text-muted">
+                    Provide a simple description of the purpose of the QR code.
+                </Form.Text>
+                <br /> <br />
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

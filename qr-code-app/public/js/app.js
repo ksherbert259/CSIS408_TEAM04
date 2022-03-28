@@ -5459,13 +5459,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _qrcode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qrcode */ "./resources/js/components/qrcode.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormGroup.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormControl.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormLabel.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _sass_dashboard_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../sass/dashboard.scss */ "./resources/sass/dashboard.scss");
+/* harmony import */ var _qrcode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./qrcode */ "./resources/js/components/qrcode.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormGroup.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormControl.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormLabel.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -5498,7 +5499,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //The QR code should be displayed in a div with the class "qr-code".
 //The QR code should be a square with a size of 200px.
 
- // import "../../sass/dashboard.scss";
+
 
 
 
@@ -5541,32 +5542,37 @@ var CreateQRCode = function CreateQRCode(_ref) {
               _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/qrCode/store", {
                 qrCode: {
-                  url: url
+                  url: url,
+                  details: details
                 }
               });
 
             case 5:
               newQRCode = _context.sent;
+              console.log(newQRCode);
               setQrCodes(function (qrCodes) {
                 return [].concat(_toConsumableArray(qrCodes), [newQRCode.data]);
               });
-              _context.next = 12;
+              setUrl("");
+              setDetails("");
+              window.scrollTo(0, document.body.scrollHeight);
+              _context.next = 16;
               break;
 
-            case 9:
-              _context.prev = 9;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](2);
               console.log(_context.t0);
 
-            case 12:
+            case 16:
               console.log(url);
 
-            case 13:
+            case 17:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 9]]);
+      }, _callee, null, [[2, 13]]);
     }));
 
     return function submitCreateQRCodeRequest(_x) {
@@ -5574,14 +5580,15 @@ var CreateQRCode = function CreateQRCode(_ref) {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "dashboard-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "create-qr-code",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
       onSubmit: submitCreateQRCodeRequest,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        className: "mb-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
           children: "Input Url"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
           type: "text",
           value: url,
           placeholder: "Enter Url",
@@ -5589,10 +5596,14 @@ var CreateQRCode = function CreateQRCode(_ref) {
             return setUrl(e.target.value);
           }
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, {
+        className: "text-muted",
+        children: "This is the url that will be encoded in the generated QR code."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        className: "mb-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
           children: "Details"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
           type: "text",
           value: details,
           placeholder: "Enter details",
@@ -5600,7 +5611,10 @@ var CreateQRCode = function CreateQRCode(_ref) {
             return setDetails(e.target.value);
           }
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, {
+        className: "text-muted",
+        children: "Provide a simple description of the purpose of the QR code."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "primary",
         type: "submit",
         children: "Submit"
@@ -5639,7 +5653,7 @@ __webpack_require__.r(__webpack_exports__);
 var QRCodeListView = function QRCodeListView(_ref) {
   var qrCodes = _ref.qrCodes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "flex",
+    className: "flex qr-code-list",
     children: qrCodes.map(function (qrcode) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_qrcode__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -5689,7 +5703,7 @@ var QRCode = function QRCode(_ref) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Title, {
           children: qrcode.url
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, {
-          children: "Some quick example text to build on the card title and make up the bulk of the card's content."
+          children: qrcode.details
         })]
       })]
     })
@@ -5794,7 +5808,9 @@ var Dashboard = function Dashboard() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "dashboard-page",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_CreateQRCode__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+      children: "QR Code Generator"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_CreateQRCode__WEBPACK_IMPORTED_MODULE_3__["default"], {
       setQrCodes: setQrCodes
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_QRCodeListView__WEBPACK_IMPORTED_MODULE_4__["default"], {
       qrCodes: qrCodes
@@ -10952,7 +10968,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".dashboard-page {\n  background-color: white;\n  padding: 50px;\n}\n.dashboard-page .flex {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.dashboard-page .qrcode-card {\n  -webkit-animation: floatIn 0.3s ease-in-out;\n          animation: floatIn 0.3s ease-in-out;\n  margin: 30px;\n}\n@-webkit-keyframes floatIn {\n  0% {\n    margin-top: 40px;\n  }\n  100% {\n    margin-top: 30px;\n  }\n}\n@keyframes floatIn {\n  0% {\n    margin-top: 40px;\n  }\n  100% {\n    margin-top: 30px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background-size: cover;\n}\n\n.dashboard-page {\n  background-color: white;\n  padding: 50px;\n}\n.dashboard-page h1 {\n  font-size: 50px;\n  font-family: \"Nunito\", sans-serif;\n  font-weight: bold;\n  color: #000;\n  margin-bottom: 20px;\n}\n.dashboard-page .flex {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.dashboard-page .qrcode-card {\n  -webkit-animation: floatIn 0.3s ease-in-out;\n          animation: floatIn 0.3s ease-in-out;\n  margin: 30px;\n}\n@-webkit-keyframes floatIn {\n  0% {\n    margin-top: 40px;\n  }\n  100% {\n    margin-top: 30px;\n  }\n}\n@keyframes floatIn {\n  0% {\n    margin-top: 40px;\n  }\n  100% {\n    margin-top: 30px;\n  }\n}\n.dashboard-page .create-qr-code {\n  padding: 20px;\n  margin-bottom: 40px;\n}\n.dashboard-page .qr-code-list {\n  background-color: #fefefe;\n  padding: 20px;\n  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\n}\n.dashboard-page .qrcode-card {\n  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

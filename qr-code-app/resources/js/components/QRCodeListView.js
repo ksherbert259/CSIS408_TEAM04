@@ -5,7 +5,7 @@ import "../../sass/dashboard.scss";
 
 const QRCodeListView = ({ qrCodes }) => {
     return (
-        <div className="flex">
+        <div className="flex qr-code-list">
             {qrCodes.map((qrcode) => (
                 <div key={qrcode.id}>
                     <QRCode qrcode={qrcode} />

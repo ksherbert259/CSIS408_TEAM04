@@ -26,6 +26,7 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-page">
+            <h1>QR Code Generator</h1>
             <CreateQRCode setQrCodes={setQrCodes} />
             <QRCodeListView qrCodes={qrCodes} />
         </div>

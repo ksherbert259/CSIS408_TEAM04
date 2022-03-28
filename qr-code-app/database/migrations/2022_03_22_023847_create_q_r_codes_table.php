@@ -15,8 +15,9 @@ class CreateQRCodesTable extends Migration
     {
         Schema::create('q_r_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('url')->nullable();
+            $table->string('details')->nullable();
             $table->timestamps();
         });
     }
