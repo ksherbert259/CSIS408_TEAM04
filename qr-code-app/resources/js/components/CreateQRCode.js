@@ -14,8 +14,9 @@ import { Form } from "react-bootstrap";
 import { FormGroup } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { FormLabel } from "react-bootstrap";
+import { AlertTypes } from "./Alert/AlertTypes";
 
-const CreateQRCode = ({ setQrCodes }) => {
+const CreateQRCode = ({ setQrCodes, setLoading, setAlert }) => {
     //Create a state variable called text that will hold the text that will be encoded.
     //The text should be set to an empty string.
     const [url, setUrl] = useState("");
@@ -28,16 +29,37 @@ const CreateQRCode = ({ setQrCodes }) => {
         e.preventDefault();
         e.stopPropagation();
 
+        if (url === "" && details === "") {
+            setAlert({
+                title: "Error!",
+                showing: true,
+                type: AlertTypes.DANGER,
+                message: "Please enter a url and details.",
+            });
+            return;
+        }
+
         //Use axios to make a request to the server to create a QR code.
         try {
+            setLoading(true);
+
             const newQRCode = await axios.post("/api/qrCode/store", {
                 qrCode: {
                     url,
                     details,
                 },
             });
-            console.log(newQRCode);
-
+            setLoading(false);
+            setAlert({
+                title: "Success!",
+                showing: true,
+                type: AlertTypes.SUCCESS,
+                message:
+                    "You have successfully created a QR code with the url: " +
+                    url +
+                    " and details: " +
+                    details,
+            });
             setQrCodes((qrCodes) => [...qrCodes, newQRCode.data]);
             setUrl("");
             setDetails("");

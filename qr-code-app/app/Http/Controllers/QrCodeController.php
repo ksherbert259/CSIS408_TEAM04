@@ -14,7 +14,7 @@ class QrCodeController extends Controller
      */
     public function index()
     {
-        return QRCode::orderBy('created_at', 'DESC')->get();
+        return QRCode::orderBy('created_at', 'ASC')->get();
     }
 
     /**

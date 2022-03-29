@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
+import AlertView from "../components/Alert/Alert";
 import "../../sass/dashboard.scss";
 import CreateQRCode from "../components/CreateQRCode";
 import QRCodeListView from "../components/QRCodeListView";
+import { AlertTypes } from "../components/Alert/AlertTypes";
 
 const Dashboard = () => {
     const [qrCodes, setQrCodes] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [alert, setAlert] = useState({
+        showing: false,
+        title: "",
+        type: AlertTypes.DANGER,
+        message: "",
+    });
 
     //Create a function that makes a request to the server to get all QR codes.
     //The request should have the following parameters:
@@ -16,8 +25,10 @@ const Dashboard = () => {
     }, []);
 
     const getQRCodes = async () => {
+        setLoading(true);
         try {
             const response = await axios.get("/api/qrCodes");
+            setLoading(false);
             setQrCodes(response.data);
         } catch (error) {
             console.log(error);
@@ -26,9 +37,21 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-page">
+            {alert.showing && (
+                <AlertView
+                    title={alert.title}
+                    message={alert.message}
+                    type={alert.type}
+                    setAlert={setAlert}
+                />
+            )}
             <h1>QR Code Generator</h1>
-            <CreateQRCode setQrCodes={setQrCodes} />
-            <QRCodeListView qrCodes={qrCodes} />
+            <CreateQRCode
+                setQrCodes={setQrCodes}
+                setLoading={setLoading}
+                setAlert={setAlert}
+            />
+            <QRCodeListView qrCodes={qrCodes} loading={loading} />
         </div>
     );
 };
