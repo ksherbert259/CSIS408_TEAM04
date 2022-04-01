@@ -29,12 +29,17 @@ const CreateQRCode = ({ setQrCodes, setLoading, setAlert }) => {
         e.preventDefault();
         e.stopPropagation();
 
-        if (url === "" && details === "") {
+        if (
+            url === "" ||
+            details === "" ||
+            !url.includes("http") ||
+            url.includes(" ")
+        ) {
             setAlert({
                 title: "Error!",
                 showing: true,
                 type: AlertTypes.DANGER,
-                message: "Please enter a url and details.",
+                message: "Please enter a vaild url and details.",
             });
             return;
         }
@@ -47,6 +52,9 @@ const CreateQRCode = ({ setQrCodes, setLoading, setAlert }) => {
                 qrCode: {
                     url,
                     details,
+                    image:
+                        "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
+                        url,
                 },
             });
             setLoading(false);
@@ -85,7 +93,8 @@ const CreateQRCode = ({ setQrCodes, setLoading, setAlert }) => {
                 </FormGroup>
                 <Form.Text className="text-muted">
                     This is the url that will be encoded in the generated QR
-                    code.
+                    code. Please enter a valid url in the format of
+                    http://www.example.com
                 </Form.Text>
                 <br /> <br />
                 <FormGroup className="mb-3">

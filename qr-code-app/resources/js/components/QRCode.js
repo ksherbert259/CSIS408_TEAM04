@@ -10,8 +10,12 @@ const QRCode = ({ qrcode }) => {
                 <Card style={{ width: "14rem" }}>
                     <Card.Img
                         variant="top"
-                        src="https://via.placeholder.com/200"
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=hi"
                     />
+                    <iframe
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=hi"
+                        frameborder="0"
+                    ></iframe>
                     <Card.Body>
                         <Card.Title>{qrcode.url}</Card.Title>
                         <Card.Text>{qrcode.details}</Card.Text>

@@ -29,6 +29,7 @@ class QrCodeController extends Controller
         $newCode = new QRCode;
         $newCode->url = $request->qrCode["url"];
         $newCode->details = $request->qrCode["details"];
+        $newCode->image = $request->qrCode["image"];
         $newCode->save();
 
         return $newCode;

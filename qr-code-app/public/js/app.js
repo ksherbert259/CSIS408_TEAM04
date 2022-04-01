@@ -6467,7 +6467,7 @@ var CreateQRCode = function CreateQRCode(_ref) {
               e.preventDefault();
               e.stopPropagation();
 
-              if (!(url === "" && details === "")) {
+              if (!(url === "" || details === "" || !url.includes("http") || url.includes(" "))) {
                 _context.next = 5;
                 break;
               }
@@ -6476,7 +6476,7 @@ var CreateQRCode = function CreateQRCode(_ref) {
                 title: "Error!",
                 showing: true,
                 type: _Alert_AlertTypes__WEBPACK_IMPORTED_MODULE_5__.AlertTypes.DANGER,
-                message: "Please enter a url and details."
+                message: "Please enter a vaild url and details."
               });
               return _context.abrupt("return");
 
@@ -6487,7 +6487,8 @@ var CreateQRCode = function CreateQRCode(_ref) {
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/qrCode/store", {
                 qrCode: {
                   url: url,
-                  details: details
+                  details: details,
+                  image: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + url
                 }
               });
 
@@ -6548,7 +6549,7 @@ var CreateQRCode = function CreateQRCode(_ref) {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, {
         className: "text-muted",
-        children: "This is the url that will be encoded in the generated QR code."
+        children: "This is the url that will be encoded in the generated QR code. Please enter a valid url in the format of http://www.example.com"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
         className: "mb-3",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -6653,7 +6654,7 @@ var QRCode = function QRCode(_ref) {
         },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Img, {
           variant: "top",
-          src: "https://via.placeholder.com/200"
+          src: qrcode.url
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Body, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Title, {
             children: qrcode.url
