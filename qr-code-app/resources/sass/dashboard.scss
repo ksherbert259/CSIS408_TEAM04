@@ -1,0 +1,56 @@
+body {
+    // background: url(https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)
+    // no-repeat center center fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.dashboard-page {
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    h1 {
+        font-size: 50px;
+        font-family: "Nunito", sans-serif;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 20px;
+    }
+    .flex {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: row-reverse;
+
+        flex-wrap: wrap;
+    }
+
+    .qrcode-card {
+        animation: floatIn 0.3s ease-in-out;
+        margin: 30px;
+        text-decoration: none;
+        color: black;
+    }
+    @keyframes floatIn {
+        0% {
+            margin-top: 40px;
+        }
+        100% {
+            margin-top: 30px;
+        }
+    }
+
+    .create-qr-code {
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+    .qr-code-list {
+        background-color: rgb(254, 254, 254);
+        // padding: 20px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .qrcode-card {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+}
